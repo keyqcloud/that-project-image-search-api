@@ -30,8 +30,9 @@ class ImageSearchController extends \Kyte\Mvc\Controller\ModelController
             $src = "";
      
             preg_match_all('/src=("[^"]*")/i',$img_tag,$src);
-            
-            $response[] = $src[0][0];
+
+            // remove src=" and trim trailing quotation
+            $response[] = rtrim(str_replace("src=\"", "", $src[0][0]),"\"");
          }
 
         // return result
