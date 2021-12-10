@@ -5,7 +5,6 @@ class ImageSearchController extends \Kyte\Mvc\Controller\ModelController
     public function hook_init() {
         $this->allowableActions = ['new']; // only allow post request
         $this->requireAuth = false; // make controller public
-        $this->requireRoles = false;
     }
 
     // handle post request
