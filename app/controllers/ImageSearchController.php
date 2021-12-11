@@ -29,7 +29,7 @@ class ImageSearchController extends \Kyte\Mvc\Controller\ModelController
         preg_match_all('/<img[^>]+>/i',$html,$result);
 
         // iterate through each tag and grab src
-        if (count($r) > 2) {
+        if (count($result[0]) > 2) {
             for ($i = 1;$i<count($result[0]);$i++) {
                 $src = "";
         
