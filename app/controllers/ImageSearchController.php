@@ -1,5 +1,8 @@
 <?php
 
+// References:
+// https://stackoverflow.com/questions/138313/how-to-extract-img-src-title-and-alt-from-html-using-php
+
 class ImageSearchController extends \Kyte\Mvc\Controller\ModelController
 {
     public function hook_init() {
@@ -26,13 +29,15 @@ class ImageSearchController extends \Kyte\Mvc\Controller\ModelController
         preg_match_all('/<img[^>]+>/i',$html,$result);
 
         // iterate through each tag and grab src
-        foreach($result[0] as $img_tag) {
-            $src = "";
-     
-            preg_match_all('/src=("[^"]*")/i',$img_tag,$src);
+        if (count($r) > 2) {
+            for ($i = 1;$i<count($result[0]);$i++) {
+                $src = "";
+        
+                preg_match_all('/src=("[^"]*")/i',$result[0][$i],$src);
 
-            // remove src=" and trim trailing quotation
-            $response[] = rtrim(str_replace("src=\"", "", $src[0][0]),"\"");
+                // remove src=" and trim trailing quotation
+                $response[] = rtrim(str_replace("src=\"", "", $src[0][0]),"\"");
+            }
          }
 
         // return result
