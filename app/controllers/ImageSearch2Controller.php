@@ -44,7 +44,7 @@ class ImageSearch2Controller extends \Kyte\Mvc\Controller\ModelController
                 $byte_array = unpack('C*', $img);
                 $imageResponse = [
                     'len' => $len = count($byte_array),
-                    'bin' => $byte_array,
+                    'bin' => array_values($byte_array),
                 ];
                 $response[] = $imageResponse;
             }
