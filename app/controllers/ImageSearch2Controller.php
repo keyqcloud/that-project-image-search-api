@@ -31,7 +31,8 @@ class ImageSearch2Controller extends \Kyte\Mvc\Controller\ModelController
 
         // iterate through each tag and grab src
         if (count($result[0]) > 2) {
-            for ($i = 1;$i<count($result[0]);$i++) {
+            // for ($i = 1;$i<count($result[0]);$i++) {
+            for ($i = 1;$i<2;$i++) {
                 $src = "";
         
                 preg_match_all('/src=("[^"]*")/i',$result[0][$i],$src);
