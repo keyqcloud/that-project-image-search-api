@@ -12,10 +12,10 @@ class ImageSearch2Controller extends \Kyte\Mvc\Controller\ModelController
     }
 
     // handle post request
-    public function new($data)
+    public function get($field, $value)
     {
         // check if a keyword was passed - if not, then fail with error
-        if (!isset($data['keyword'])) {
+        if (empty($value)) {
             throw new \Exception("Please provide search keywords");
         }
 
@@ -23,7 +23,7 @@ class ImageSearch2Controller extends \Kyte\Mvc\Controller\ModelController
         $response = [];
 
         // get Google Image Search result
-        $url = "http://images.google.it/images?as_q=".urlencode($data['keyword']);
+        $url = "http://images.google.it/images?as_q=".urlencode($value);
         $html = file_get_contents($url);
 
         // find all img tags
